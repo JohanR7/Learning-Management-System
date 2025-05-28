@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Enhanced solution for autofill background issues */
+/* Chrome, Safari, Edge */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--text-light) !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--input-bg) inset !important;
+  box-shadow: 0 0 0 1000px var(--input-bg) inset !important;
+  transition: background-color 9999s ease-out !important;
+  background-clip: content-box !important;
+}
+
+/* Firefox */
+@-moz-document url-prefix() {
+  input:-moz-autofill,
+  input:-moz-autofill:focus {
+    background-color: var(--input-bg) !important;
+    color: var(--text-light) !important;
+  }
+}
+
+/* Additional fix for most modern browsers */
+.input-wrapper {
+  /* Add to existing styles */
+  background-color: var(--input-bg) !important;
+}
+
+/* Force background color to remain consistent */
+.input-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--input-bg);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Increase specificity for input styles */
+.input-wrapper input,
+.input-wrapper input:focus {
+  background-color: transparent !important;
+  color: var(--text-light) !important;
+  z-index: 2;
+}
+*{margin:0px; padding:0px;}
+
+* {
+  font-family: 'Poppins', 'Open Sans', sans-serif;
+}
+
+
+/* Base styles that apply to all pages */
+.main .content {
+  width: 95vw; /* Replace percentage with calculation */
+  flex: 1; /* Replace fixed flex value */
+  transition: all 0.3s ease-in-out;
+  margin-top: 1rem;
+}
+
+.main .content.toggle {
+  width: 95vw;
+  margin-left: -3.5vw; /* Add this line */
+}
+
+/* Page-specific overrides using data attributes */
+.main[data-page="dashboard"] .content {
+  margin-left: 0.5vw
+}
+
+.main[data-page="dashboard"] .content.toggle {
+  margin-left: -2vw
+}
+
+.main[data-page="course"] .content {
+  margin-left: 3vw;
+}
+
+.main[data-page="course"] .content.toggle {
+  margin-left: 1vw;
+}
+
+.main[data-page="assignment"] .content {
+  margin-left: 3vw;
+}
+
+.main[data-page="assignment"] .content.toggle {
+  margin-left: 1vw;
+}
+
+.main[data-page="leaderboard"] .content {
+  margin-left: 3vw;
+}
+
+.main[data-page="leaderboard"] .content.toggle {
+  margin-left: 1vw;
+}
+
+.main[data-page="quiz"] .content {
+  margin-left: 3vw;
+}
+
+.main[data-page="quiz"] .content.toggle {
+  margin-left: 1vw;
+}
+.main[data-page="userprofile"] .content {
+  margin-left: 3vw;
+}
+
+.main[data-page="userprofile"] .content.toggle {
+  margin-left: -1vw;
+}
